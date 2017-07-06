@@ -1,2 +1,2 @@
-# lolliplot
-Python script for generating lollipop plots for variant visualization in proteins
+# VariantTools
+Collection of python scripts for variant analysis and visualization
