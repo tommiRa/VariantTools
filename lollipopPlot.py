@@ -3,11 +3,11 @@ import matplotlib.patches as patches
 import json
 import numpy as np
 
-'''
-Set color for domains if there are more than 7 distinct domains cycle colors.
-More colors should be added!
-'''
 def setColor(i):
+    '''
+    Set color for domains if there are more than 7 distinct domains cycle colors.
+    More colors should be added!
+    '''
     return(["blue", "green", "red", "cyan", "magenta", "yellow", "purple"][i % 7])
 
 def parse_domain_json(inputdom):
@@ -39,13 +39,21 @@ def parse_domain_json(inputdom):
         protein_dc["domains"][desc]["coordinates"].append((start,end))
     return(protein_dc)
 
-# Transform the coordinate (0,3000)
 def transform(coord, length):
+    '''
+    Transform the coordinate so that the scale is always same 
+    despite of the protein length. At the moment use a constant 
+    value of 3000
+    '''
     return(3000*float(coord)/float(length))
 
-#Plot the legend
+
 def plotLegend(ax, protein_dc):
 
+    '''
+    Plots the legend for the graph
+    '''
+    
     # domain patches
     dom_patches = []
     for domain in protein_dc["domains"].keys():
@@ -54,12 +62,9 @@ def plotLegend(ax, protein_dc):
 
     plt.legend(handles = dom_patches , numpoints=1, loc=1, prop={'size':6})
 
-
     # Plot legends for variant types
     #line2 = mlines.Line2D(range(1), range(1), color="white",
     #markersize=15, marker='o',markerfacecolor="green")
-
-
 
 def plotDomains(ax, fig1, protein_dc):
 
